@@ -38,9 +38,7 @@ except ConnectionFailure as e:
     # sentry_sdk.capture_exception(e)  # send the error to sentry.io. delete if not using
     sys.exit(1)  # this is a catastrophic error, so no reason to continue to live
 
-
 # set up the routes
-
 
 @app.route("/")
 def home():
