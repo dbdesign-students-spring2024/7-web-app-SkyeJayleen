@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-pip install pymongo
+pip3 install pymongo
 
 import os
 import sys
