@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+pip install pymongo
+
 import os
 import sys
 import subprocess
