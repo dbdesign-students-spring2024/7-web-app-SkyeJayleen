@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
 
 {% block container %}
-<h2>Welcome!</h2>
-<p>Welcome to the Flask app. This is the home page. Here are a few links to example pages you might find interesting.
-    <ul>
-        <li><a href="{{ url_for('read')}}">a page that displays information pulled from a MongoDB database collection</a></li>
-        <li><a href="{{ url_for('create')}}">a page with a form you can submit to create a new record in a MongoDB collection</a></li>
-    </ul>
+
+<p>
+    Pocket Poetry allows you to easily archive works of your favorite poets, and even write your own!
+</p>
+<p>
+    The purpose of this web app is for casually writing and archiving your favorite poems.
+    If you are looking to browse an established online archive of poems, try visiting one of the following sites:
+</p>
+<br>
+<p>
+    <a href="https://www.poetryfoundation.org/" class="button1">Poetry Foundation</a>
+    <a href="https://poetryarchive.org/" class="button2">Poetry Archive</a>
+    <a href="https://poets.org/" class="button3">The Academy of American Poets</a>
 </p>
 {% endblock %}

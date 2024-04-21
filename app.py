@@ -77,16 +77,17 @@ def create_post():
     Accepts the form submission data for a new document and saves the document to the database.
     """
     name = request.form["fname"]
+    title = request.form["ftitle"]
     message = request.form["fmessage"]
+    date = request.form["fdate"]
 
     # create a new document with the data the user entered
-    doc = {"name": name, "message": message, "created_at": datetime.datetime.utcnow()}
+    doc = {"name": name, "title": title, "message": message, "date": date, "created_at": datetime.datetime.utcnow()}
     db.exampleapp.insert_one(doc)  # insert a new document
 
     return redirect(
         url_for("read")
     )  # tell the browser to make a request for the /read route
-
 
 @app.route("/edit/<mongoid>")
 def edit(mongoid):
@@ -165,6 +166,16 @@ def webhook():
     response.mimetype = "text/plain"
     return response
 
+@app.route('/search')
+def search():
+    query = request.args.get('query')
+    results = db.exampleapp.find({'$or': [{'title': {'$regex': query, '$options': 'i'}}, {'content': {'$regex': query, '$options': 'i'}}]})
+    return render_template('search_results.html', results=results)
+
+'''<form action="/search" method="GET">
+        <input type="text" name="query" placeholder="Search...">
+        <button type="submit">Search</button>
+    </form>'''
 
 @app.errorhandler(Exception)
 def handle_error(e):
@@ -172,7 +183,6 @@ def handle_error(e):
     Output any errors - good for debugging.
     """
     return render_template("error.html", error=e)  # render the edit template
-
 
 # run the app
 if __name__ == "__main__":

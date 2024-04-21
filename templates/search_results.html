@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block container %}
+
+</head>
+<body>
+    <h1>Search Results</h1>
+    <ul>
+        {% for doc in results %}
+        <li>
+            <h2>{{ doc.title }}</h2>
+            <p>Writer: {{ doc.name }}</p>
+            <p>Written: {{ doc.date }}</p>
+            <pre>Text: {{ doc.message }}</pre>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+{% endblock %}

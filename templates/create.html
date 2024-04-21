@@ -1,12 +1,14 @@
 {% extends 'base.html' %} {% block container %}
-<h2>Create</h2>
-<p>Create a new record in the MongoDB database collection.</p>
+<h2>Write</h2>
+<p>Write down a poem you'd like to archive, or write your own poem!</p>
 <form method="POST" action="{{ url_for('create_post') }}">
-  <p>Your name: <input type="text" id="fname" name="fname" /><br /></p>
+  <p>Writer: <input type="text" id="fname" name="fname" /><br /></p>
+  <p>Title: <input type="text" id="ftitle" name="ftitle" /><br /></p>
   <p>
-    Message:
+    Body Text:
     <textarea type="text" id="fmessage" name="fmessage"></textarea>
   </p>
+  <p>Date Written(YYYY/MM/DD): <input type="text" id="fdate" name="fdate" /><br /></p>
   <p>
     <a href="{{ url_for('read')}}">Cancel</a>
     <input type="submit" name="post-btn" value="Post" />
