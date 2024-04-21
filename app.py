@@ -114,14 +114,11 @@ def edit_post(mongoid):
     mongoid (str): The MongoDB ObjectId of the record to be edited.
     """
     name = request.form["fname"]
+    title = request.form["ftitle"]
     message = request.form["fmessage"]
+    date = request.form["fdate"]
 
-    doc = {
-        # "_id": ObjectId(mongoid),
-        "name": name,
-        "message": message,
-        "created_at": datetime.datetime.utcnow(),
-    }
+    doc = {"name": name, "title": title, "message": message, "date": date, "created_at": datetime.datetime.utcnow()}
 
     db.exampleapp.update_one(
         {"_id": ObjectId(mongoid)}, {"$set": doc}  # match criteria
@@ -129,7 +126,7 @@ def edit_post(mongoid):
 
     return redirect(
         url_for("read")
-    )  # tell the browser to make a request for the /read route
+    )
 
 
 @app.route("/delete/<mongoid>")
