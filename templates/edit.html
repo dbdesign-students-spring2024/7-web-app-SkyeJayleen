@@ -1,9 +1,9 @@
 {% extends 'base.html' %} {% block container %}
 <h2>Update</h2>
-<p>Edit a record in the MongoDB database collection.</p>
+<p>Edit a record in your archive.</p>
 <form method="POST" action="{{ url_for('edit_post', mongoid=mongoid) }}">
   <p>
-    Your name:
+    Writer:
     <input type="text" id="fname" name="fname" value="{{doc.name}}" /><br />
   </p>
   <p>
@@ -13,6 +13,9 @@
   <p>
     Body Text:
     <textarea id="fmessage" name="fmessage">{{doc.message}}</textarea>
+  </p>
+  <p>Date Written(YYYY/MM/DD):
+    <input type="text" id="fdate" name="fdate" value="{{doc.date}}" /><br />
   </p>
   <p>
     <a href="{{ url_for('read')}}">Cancel</a>

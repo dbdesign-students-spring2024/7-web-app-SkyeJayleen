@@ -169,13 +169,8 @@ def webhook():
 @app.route('/search')
 def search():
     query = request.args.get('query')
-    results = db.exampleapp.find({'$or': [{'title': {'$regex': query, '$options': 'i'}}, {'content': {'$regex': query, '$options': 'i'}}]})
+    results = db.exampleapp.find({'$or': [{'name': {'$regex': query, '$options': 'i'}}, {'title': {'$regex': query, '$options': 'i'}}, {'message': {'$regex': query, '$options': 'i'}}, {'date': {'$regex': query, '$options': 'i'}}]})
     return render_template('search_results.html', results=results)
-
-'''<form action="/search" method="GET">
-        <input type="text" name="query" placeholder="Search...">
-        <button type="submit">Search</button>
-    </form>'''
 
 @app.errorhandler(Exception)
 def handle_error(e):

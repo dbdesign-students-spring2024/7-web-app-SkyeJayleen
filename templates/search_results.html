@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
 {% block container %}
-
+<form action="/search" method="GET">
+    <input type="text" name="query" placeholder="Search...">
+    <button type="submit">Search</button>
+</form>
 </head>
 <body>
     <h1>Search Results</h1>
@@ -9,9 +12,9 @@
         {% for doc in results %}
         <li>
             <h2>{{ doc.title }}</h2>
-            <p>Writer: {{ doc.name }}</p>
-            <p>Written: {{ doc.date }}</p>
-            <pre>Text: {{ doc.message }}</pre>
+            <h3>Writer: {{ doc.name }}</h3>
+            <h3>Written: {{ doc.date }}</h3>
+            <pre>{{ doc.message }}</pre>
         </li>
         {% endfor %}
     </ul>
